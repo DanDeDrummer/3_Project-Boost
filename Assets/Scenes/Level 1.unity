@@ -121,6 +121,75 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1001 &69131567
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 5312994915625645674, guid: 7e1e12c9a58f02c4e862662254b4a68e,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.050311804
+      objectReference: {fileID: 0}
+    - target: {fileID: 5312994915625645674, guid: 7e1e12c9a58f02c4e862662254b4a68e,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.06
+      objectReference: {fileID: 0}
+    - target: {fileID: 5312994915625645674, guid: 7e1e12c9a58f02c4e862662254b4a68e,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.20729446
+      objectReference: {fileID: 0}
+    - target: {fileID: 5312994915625645674, guid: 7e1e12c9a58f02c4e862662254b4a68e,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5312994915625645674, guid: 7e1e12c9a58f02c4e862662254b4a68e,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5312994915625645674, guid: 7e1e12c9a58f02c4e862662254b4a68e,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5312994915625645674, guid: 7e1e12c9a58f02c4e862662254b4a68e,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5312994915625645674, guid: 7e1e12c9a58f02c4e862662254b4a68e,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5312994915625645674, guid: 7e1e12c9a58f02c4e862662254b4a68e,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5312994915625645674, guid: 7e1e12c9a58f02c4e862662254b4a68e,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5312994915625645674, guid: 7e1e12c9a58f02c4e862662254b4a68e,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7019429553915038649, guid: 7e1e12c9a58f02c4e862662254b4a68e,
+        type: 3}
+      propertyPath: m_Name
+      value: RocketShip
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 7e1e12c9a58f02c4e862662254b4a68e, type: 3}
 --- !u!108 &705507994 stripped
 Light:
   m_CorrespondingSourceObject: {fileID: 6793051833853607060, guid: 522f6ec79963dc34e89f492ceee46382,
