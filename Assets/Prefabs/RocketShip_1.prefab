@@ -261,6 +261,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   audioSource:
   - {fileID: 485598508241691186}
+  - {fileID: 7303646861520260513}
   rcsThrust: 150
   mainThrust: 900
 --- !u!1 &951874132108969965
@@ -274,7 +275,7 @@ GameObject:
   - component: {fileID: 7762131876688673342}
   - component: {fileID: 258619455743471616}
   - component: {fileID: 2568035936951247842}
-  - component: {fileID: 5729271430121768756}
+  - component: {fileID: 435089672}
   m_Layer: 0
   m_Name: Body
   m_TagString: Untagged
@@ -343,8 +344,8 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!135 &5729271430121768756
-SphereCollider:
+--- !u!136 &435089672
+CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -353,9 +354,10 @@ SphereCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.1
-  m_Center: {x: 0, y: 0.4, z: 0}
+  m_Radius: 0.5068566
+  m_Height: 1.0000001
+  m_Direction: 1
+  m_Center: {x: -0.0069639417, y: 0.000000064636936, z: 0}
 --- !u!1 &1800411007972271773
 GameObject:
   m_ObjectHideFlags: 0
