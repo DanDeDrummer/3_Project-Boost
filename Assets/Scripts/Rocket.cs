@@ -6,7 +6,7 @@ using UnityEngine;
 public class Rocket : MonoBehaviour
 {
     Rigidbody rigidBody;
-    AudioSource audioSource;
+    [SerializeField] AudioSource[] audioSource;
     [SerializeField] float rcsThrust = 100f;
     [SerializeField] float mainThrust = 10f;
     
@@ -17,7 +17,8 @@ public class Rocket : MonoBehaviour
     void Start()
     {
         rigidBody = GetComponent<Rigidbody>();
-        audioSource = GetComponent<AudioSource>();
+        audioSource = GetComponents<AudioSource>();
+       
         
     }
 
@@ -34,9 +35,9 @@ public class Rocket : MonoBehaviour
 
         if (Input.GetKey(KeyCode.Space))
         {
-            if (!audioSource.isPlaying)
+            if (!audioSource[0].isPlaying)
             {
-                audioSource.Play();
+                audioSource[0].Play();
             }
 
             rigidBody.AddRelativeForce(Vector3.up * thrustThisFrame);
@@ -44,7 +45,7 @@ public class Rocket : MonoBehaviour
         }
         else
         {
-            audioSource.Stop();
+            audioSource[0].Stop();
         }
     }
 
@@ -53,13 +54,21 @@ public class Rocket : MonoBehaviour
         rigidBody.freezeRotation = true;       
         float rotationThisFrame = rcsThrust * Time.deltaTime;
         if (Input.GetKey(KeyCode.A))
-        {           
+        {
+            if (!audioSource[1].isPlaying)
+            {
+                audioSource[1].Play();
+            }
             transform.Rotate(Vector3.forward * rotationThisFrame);
             Debug.Log("Rotating Left");
         }
 
         else if (Input.GetKey(KeyCode.D))
         {
+            if (!audioSource[1].isPlaying)
+            {
+                audioSource[1].Play();
+            }
             transform.Rotate(-Vector3.forward * rotationThisFrame);
             Debug.Log("Rotating Right");
         }
