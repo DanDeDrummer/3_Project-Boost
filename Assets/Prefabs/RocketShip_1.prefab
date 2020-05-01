@@ -259,11 +259,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0094a34855c2b8c40b4d4c0335d83254, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  audioSource:
-  - {fileID: 485598508241691186}
-  - {fileID: 7303646861520260513}
   rcsThrust: 150
   mainThrust: 900
+  sceneLoadTime: 1
+  audioClips:
+  - {fileID: 8300000, guid: 2d8143f6c122828479ee878df313fde8, type: 3}
+  - {fileID: 8300000, guid: 82dff2431eab1094aaf14a9f613d283c, type: 3}
+  - {fileID: 8300000, guid: ae15a361628c9b04e903de71d7ee3a48, type: 3}
 --- !u!1 &951874132108969965
 GameObject:
   m_ObjectHideFlags: 0
