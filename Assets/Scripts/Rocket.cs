@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class Rocket : MonoBehaviour
 {
+    //TODO RESTE LEVEL Loader
     Rigidbody rigidBody;
     [Header("Main Variables")]
     [SerializeField] float rcsThrust = 100f;
@@ -148,7 +149,7 @@ public class Rocket : MonoBehaviour
 
     private void LoadNextLevel()
     {
-        SceneManager.LoadScene(1);//TODO Alllow more than 2 levels
+        SceneManager.LoadScene(5);//TODO Alllow more than 2 levels
 
     }
 }
