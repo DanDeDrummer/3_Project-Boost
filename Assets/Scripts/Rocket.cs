@@ -7,10 +7,20 @@ using UnityEngine.SceneManagement;
 public class Rocket : MonoBehaviour
 {
     Rigidbody rigidBody;
-    AudioSource[] audioSource;//Removed Serializefield tag and array still workes
+    [Header("Main Variables")]
     [SerializeField] float rcsThrust = 100f;
     [SerializeField] float mainThrust = 10f;
     [SerializeField] float sceneLoadTime = 1f;
+
+    [Header("Particle System")]
+    [SerializeField] ParticleSystem mainEngineParticles;
+    [SerializeField] ParticleSystem thrustersParticlesPort;
+    [SerializeField] ParticleSystem thrustersParticlesStarboard;
+    [SerializeField] ParticleSystem sucessParticles;
+    [SerializeField] ParticleSystem deathParticles;
+
+    [Header("Audio")]
+    AudioSource[] audioSource;//Removed Serializefield tag and array still workes
     [SerializeField] AudioClip[] audioClips;
 
     enum State {Alive, Dying, Transending };
@@ -48,6 +58,7 @@ public class Rocket : MonoBehaviour
         else
         {
             audioSource[0].Stop();
+            mainEngineParticles.Stop();
         }
     }
 
@@ -57,7 +68,7 @@ public class Rocket : MonoBehaviour
         {
             audioSource[0].PlayOneShot(audioClips[0]);
         }
-
+        mainEngineParticles.Play();
         rigidBody.AddRelativeForce(Vector3.up * thrustThisFrame);
         Debug.Log("Thrusting");
     }
@@ -66,21 +77,25 @@ public class Rocket : MonoBehaviour
     {
         rigidBody.freezeRotation = true;       
         float rotationThisFrame = rcsThrust * Time.deltaTime;
-        if (Input.GetKey(KeyCode.A))
+
+        if (Input.GetKey(KeyCode.A))///When Pressing A//////
         {                    
             if (!audioSource[1].isPlaying)
-            {
+            {                
                 audioSource[1].Play();
+                thrustersParticlesPort.Play();
+                //thrustersParticles.transform.rotation.y = 90; 
             }
             transform.Rotate(Vector3.forward * rotationThisFrame);
             Debug.Log("Rotating Left");
         }
 
-        else if (Input.GetKey(KeyCode.D))
+        else if (Input.GetKey(KeyCode.D))///When Pressing D//////
         {
             if (!audioSource[1].isPlaying)
             {
                 audioSource[1].Play();
+                thrustersParticlesStarboard.Play(); 
             }
             transform.Rotate(-Vector3.forward * rotationThisFrame);
             Debug.Log("Rotating Right");
@@ -113,6 +128,7 @@ public class Rocket : MonoBehaviour
         state = State.Dying;
         audioSource[0].Stop();
         audioSource[0].PlayOneShot(audioClips[2]);
+        deathParticles.Play();
         Invoke("LoadFirstLevel", sceneLoadTime);
     }
 
@@ -121,6 +137,7 @@ public class Rocket : MonoBehaviour
         state = State.Transending;
         audioSource[0].Stop();
         audioSource[0].PlayOneShot(audioClips[1]);
+        sucessParticles.Play();
         Invoke("LoadNextLevel", sceneLoadTime);
     }
 
