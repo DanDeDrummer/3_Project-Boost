@@ -28,11 +28,17 @@ public class Rocket : MonoBehaviour
     State state = State.Alive;
 
 
+    //Testing///
+    bool doCollision = true;
+
     // Start is called before the first frame update
     void Start()
     {
         rigidBody = GetComponent<Rigidbody>();
         audioSource = GetComponents<AudioSource>();
+
+        const float tau = Mathf.PI * 2f;
+        print("tsu: " + Mathf.Sin(tau/4));
        
         
     }
@@ -40,13 +46,40 @@ public class Rocket : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
         if (state == State.Alive)
         {
             RespondToThrust();
             RespondToRotate();
         }
+
+        if (Debug.isDebugBuild)
+        {
+            RespondToDebugKeys();
+        }
     }
+
+    private void RespondToDebugKeys()
+    {
+        //Setup Debug Keys
+        if (Input.GetKeyDown(KeyCode.L))
+        {
+            LoadNextLevel();
+        }
+
+        if (Input.GetKeyDown(KeyCode.K))
+        {
+            LoadPrevLevel();
+        }
+        if (Input.GetKeyDown(KeyCode.C))
+        {
+            doCollision = !doCollision;
+            if (doCollision) { Debug.Log("Collisions ON"); }
+            else{ Debug.Log("Collisions OFF"); }
+         
+        }
+    }
+
+
 
     private void RespondToThrust()
     {
@@ -71,7 +104,7 @@ public class Rocket : MonoBehaviour
         }
         mainEngineParticles.Play();
         rigidBody.AddRelativeForce(Vector3.up * thrustThisFrame);
-        Debug.Log("Thrusting");
+        //Debug.Log("Thrusting");
     }
 
     private void RespondToRotate()
@@ -88,7 +121,7 @@ public class Rocket : MonoBehaviour
                 //thrustersParticles.transform.rotation.y = 90; 
             }
             transform.Rotate(Vector3.forward * rotationThisFrame);
-            Debug.Log("Rotating Left");
+            //Debug.Log("Rotating Left");
         }
 
         else if (Input.GetKey(KeyCode.D))///When Pressing D//////
@@ -99,7 +132,7 @@ public class Rocket : MonoBehaviour
                 thrustersParticlesStarboard.Play(); 
             }
             transform.Rotate(-Vector3.forward * rotationThisFrame);
-            Debug.Log("Rotating Right");
+            //Debug.Log("Rotating Right");
         }
 
         rigidBody.freezeRotation = false;
@@ -107,7 +140,7 @@ public class Rocket : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (state != State.Alive) { return; }
+        if (state != State.Alive || !doCollision) { return; }
 
         switch (collision.gameObject.tag)
         {
@@ -149,7 +182,19 @@ public class Rocket : MonoBehaviour
 
     private void LoadNextLevel()
     {
-        SceneManager.LoadScene(5);//TODO Alllow more than 2 levels
-
+        int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
+        if (currentSceneIndex == 5) { Debug.Log("No more levels");  return; }
+        SceneManager.LoadScene(currentSceneIndex + 1);//TODO Alllow more than 2 levels
     }
+
+    private void LoadPrevLevel()
+    {
+        int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
+        if (currentSceneIndex == 0) { Debug.Log("No more levels");  return; }
+        SceneManager.LoadScene(currentSceneIndex - 1);//TODO Alllow more than 2 levels
+    }
+
+
+
+
 }
